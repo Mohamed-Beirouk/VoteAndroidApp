@@ -70,15 +70,18 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"/>
 
-    <TextView
+
+    <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inscription"
         android:layout_below="@id/forgotpass"
         android:text="Nouveau? cree un compte"
-        android:textColor="@color/white"
+        android:backgroundTint="@color/design_default_color_secondary"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"/>
+
+
 
     <TextView
         android:layout_width="wrap_content"

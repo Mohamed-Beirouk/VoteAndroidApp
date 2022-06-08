@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
     private Button loginBtn;
+    private Button inscription;
     private EditText emailv;
     private EditText passwordv;
     @Override
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         emailv = findViewById(R.id.email);
         passwordv = findViewById(R.id.password);
+        inscription = findViewById(R.id.inscription);
+
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,6 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 passwordv.getText();
                 loginUserAccount();
 
+            }
+        });
+        inscription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,  inscription.class);
+                startActivity(intent);
             }
         });
 
@@ -116,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     // sign-in failed
                                     Toast.makeText(getApplicationContext(),
-                                                    "Login failed!!",
+                                                    "Login failed!!"+password,
                                                     Toast.LENGTH_LONG)
                                             .show();
 
