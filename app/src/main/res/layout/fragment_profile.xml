@@ -34,7 +34,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@id/profileImage"
                 android:fontFamily="@font/bungee"
-                android:text="Mohamed BEIROUK"
+                android:text="Failed"
                 android:textSize="20sp" />
 
             <TextView
@@ -47,7 +47,7 @@
                 android:layout_marginTop="-15dp"
                 android:layout_toRightOf="@id/profileImage"
                 android:includeFontPadding="false"
-                android:text="Mohamed BEIROUK"
+                android:text="failed"
                 android:textSize="14sp" />
 
         </RelativeLayout>
@@ -174,12 +174,12 @@
                     android:cursorVisible="false"
                     android:drawableLeft="@drawable/ic_baseline_perm_identity_24"
                     android:drawablePadding="10dp"
-                    android:text="Mohamed BEIROUK" />
+                    android:text="failed to get it" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editTextProfileNumero"
+                android:id="@+id/editTextProfileemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white"
@@ -193,12 +193,12 @@
                     android:cursorVisible="false"
                     android:drawableLeft="@drawable/ic_baseline_email_24"
                     android:drawablePadding="10dp"
-                    android:text="mbeirouck@gmail.com" />
+                    android:text="failed to get email" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editTextProfileCin"
+                android:id="@+id/editTextProfileusername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white"
@@ -212,12 +212,12 @@
                     android:cursorVisible="false"
                     android:drawableLeft="@drawable/ic_baseline_credit_card_24_black"
                     android:drawablePadding="10dp"
-                    android:text="Mohamed BEIROUK" />
+                    android:text="failed to get username" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/editTextProfileValidUntil"
+                android:id="@+id/editTextProfilepassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:boxBackgroundColor="@color/white"
@@ -239,11 +239,12 @@
 
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#87CEEB"
                 android:layout_marginTop="20dp"
-                android:text="Update" />
+                android:text="Déconnecter" />
 
         </LinearLayout>
 
