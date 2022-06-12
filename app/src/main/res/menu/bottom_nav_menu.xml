@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_baseline_home_24"/>
+    <item
+        android:id="@+id/nouveau"
+        android:title="Nouveau"
+        android:icon="@drawable/ic_baseline_post_add_24"/>
+    <item
+        android:id="@+id/votes"
+        android:title="votes"
+        android:icon="@drawable/ic_baseline_how_to_vote_24"/>
+    <item
+        android:id="@+id/results"
+        android:title="results"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+</menu>

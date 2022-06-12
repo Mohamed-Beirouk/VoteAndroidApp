@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
             currentUser.reload();
@@ -71,17 +70,11 @@ public class MainActivity extends AppCompatActivity {
     }
     private void loginUserAccount()
     {
-
-        // show the visibility of progress bar to show loading
-//        progressbar.setVisibility(View.VISIBLE);
-
-        // Take the value of two edit texts in Strings
-
         String email, password;
-        email = emailv.getText().toString();
+        email = emailv.getText().toString().trim();
+
         password = passwordv.getText().toString();
 
-        // validations for input email and password
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
                             "Please enter email!!",
@@ -98,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        // signin existing user
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                         new OnCompleteListener<AuthResult>() {
@@ -113,26 +105,23 @@ public class MainActivity extends AppCompatActivity {
                                                     Toast.LENGTH_LONG)
                                             .show();
 
-                                    // hide the progress bar
-//                                    progressBar.setVisibility(View.GONE);
-
-                                    // if sign-in is successful
-                                    // intent to home activity
-        Intent intent = new Intent(MainActivity.this,  inscription.class);
+        Intent intent = new Intent(MainActivity.this,  home.class);
                                     startActivity(intent);
                                 }
-
                                 else {
+                                    Log.e("Login Error", "signInWithEmailAndPassword", task.getException());
 
-                                    // sign-in failed
-                                    Toast.makeText(getApplicationContext(),
-                                                    "Login failed!!"+password,
-                                                    Toast.LENGTH_LONG)
-                                            .show();
-
-                                    // hide the progress bar
-//                                    progressbar.setVisibility(View.GONE);
                                 }
+//                                else {
+//
+//                                    // sign-in failed
+//                                    Toast.makeText(getApplicationContext(),
+//                                                    "Login failed!!"+password,
+//                                                    Toast.LENGTH_LONG)
+//                                            .show();
+//
+//
+//                                }
                             }
                         });
     }
