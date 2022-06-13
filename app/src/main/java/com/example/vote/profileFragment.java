@@ -3,8 +3,10 @@ package com.example.vote;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +16,11 @@ import android.widget.TextView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class profileFragment extends Fragment {
     private TextView profileLibelle;
@@ -61,13 +66,39 @@ public class profileFragment extends Fragment {
         editTextProfilepassword = view.findViewById(R.id.editTextProfilepassword);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("users");
         String useremail = user.getEmail();
         editTextProfileemail.getEditText().setText(useremail);
-        String name = user.getDisplayName();
-        profileLibelle.setText(name);
-        profileLibelle2.setText(name);
-        editTextProfileLibelle.getEditText().setText(name);
+
+//
+
+        reference = FirebaseDatabase.getInstance().getReference("users");
+        DatabaseReference nom =  reference.child(user.getUid()).child("nom");
+        DatabaseReference username =  reference.child(user.getUid()).child("username");
+        Log.e("nom", "nom : " +nom );
+        nom.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String nom = dataSnapshot.getValue(String.class);
+                Log.e("nom", "nom : " +nom );
+                editTextProfileLibelle.getEditText().setText(nom);
+                profileLibelle.setText(nom);
+                profileLibelle2.setText(nom);
+
+            }@Override
+            public void onCancelled(@NonNull DatabaseError error) {}});
+
+        username.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String username = dataSnapshot.getValue(String.class);
+                Log.e("nom", "nom : " +username );
+                editTextProfileusername.getEditText().setText(username);
+
+            }@Override
+            public void onCancelled(@NonNull DatabaseError error) {}});
+//        profileLibelle.setText(name);
+//        profileLibelle2.setText(name);
+//        editTextProfileLibelle.getEditText().setText(name);
 
         return view;
     }
