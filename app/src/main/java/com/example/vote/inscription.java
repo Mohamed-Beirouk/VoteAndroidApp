@@ -110,9 +110,5 @@ public class inscription extends AppCompatActivity implements View.OnClickListen
                         }
                     }
                 });
-
-
-
-
     }
 }
