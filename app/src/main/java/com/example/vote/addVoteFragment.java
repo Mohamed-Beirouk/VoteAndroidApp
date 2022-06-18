@@ -85,20 +85,19 @@ public class addVoteFragment extends Fragment {
 
         votes vote = new votes(ques,date);
 
+        String key = FirebaseDatabase.getInstance().getReference("votes").push().getKey();
+
         FirebaseDatabase.getInstance().getReference("votes")
-                .child("3")
+                .child(key)
                 .setValue(vote).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-
-//                            Intent intent = new Intent(addVoteFragment.this,  profileFragment.class);
+                            Toast.makeText(getActivity(), "Publié avec succés", Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(getActivity(), sondageFragment.class);
 //                            startActivity(intent);
-
-                        }
-                        else {
-                            //Toast.makeText(addVoteFragment.this, "error ", Toast.LENGTH_LONG).show();
-
+                        } else {
+                            Toast.makeText(getActivity(), "Erreur est survenue, ressayer!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -142,6 +141,12 @@ public class addVoteFragment extends Fragment {
                 break;
             case "Mar":
                 month="03";
+                break;
+            case "Apr":
+                month="04";
+                break;
+            case "May":
+                month="05";
                 break;
             case "Jun":
                 month="06";
