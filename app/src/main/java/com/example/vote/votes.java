@@ -3,11 +3,17 @@ package com.example.vote;
 import java.util.Date;
 
 public class votes {
-    private int id;
+    private String id;
     private String Question;
     private String datefin;
 
     public votes(String question, String datefin) {
+        Question = question;
+        this.datefin = datefin;
+    }
+
+    public votes(String id, String question, String datefin) {
+        this.id = id;
         Question = question;
         this.datefin = datefin;
     }
@@ -20,11 +26,11 @@ public class votes {
     public votes() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

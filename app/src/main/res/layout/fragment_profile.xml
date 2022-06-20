@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back2"
+    android:background="@color/white"
     tools:context=".profileFragment">
 
     <LinearLayout
@@ -35,7 +35,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_toRightOf="@id/profileImage"
                 android:fontFamily="@font/bungee"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="Failed"
                 android:textSize="20sp" />
 
@@ -47,7 +47,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="-15dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:layout_toRightOf="@id/profileImage"
                 android:includeFontPadding="false"
                 android:text="failed"
@@ -63,7 +63,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="#87CEEB"
@@ -87,7 +87,7 @@
                         android:layout_centerInParent="true"
                         android:fontFamily="@font/bungee"
                         android:includeFontPadding="false"
-                        android:text="100"
+                        android:text="50"
                         android:textSize="20sp" />
 
 
@@ -109,7 +109,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
-                android:layout_height="125dp"
+                android:layout_height="100dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="#87CEEB"
@@ -238,16 +238,16 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/logout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#87CEEB"
-                android:layout_marginTop="20dp"
-                android:text="Déconnecter" />
+                android:text="Déconnecter"
+                android:backgroundTint="#87CEEB"
+                android:textColor="@color/black"
+                android:drawableLeft="@drawable/ic_baseline_power_settings_new_24"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="20dp"/>
 
         </LinearLayout>
 

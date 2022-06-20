@@ -73,19 +73,13 @@ public class addVoteFragment extends Fragment {
 
         return view;
     }
-
+    String key = FirebaseDatabase.getInstance().getReference("votes").push().getKey();
     private void addvote() {
         String ques = question.getText().toString().trim();
         String date = correctDate(date2);
-        String re1 = r1.getText().toString().trim();
-        String re2 = r2.getText().toString().trim();
-        String re3 = r3.getText().toString().trim();
-        String re4 = r4.getText().toString().trim();
-        String re5 = r5.getText().toString().trim();
 
-        votes vote = new votes(ques,date);
 
-        String key = FirebaseDatabase.getInstance().getReference("votes").push().getKey();
+        votes vote = new votes(key,ques,date);
 
         FirebaseDatabase.getInstance().getReference("votes")
                 .child(key)
@@ -94,10 +88,88 @@ public class addVoteFragment extends Fragment {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getActivity(), "Publié avec succés", Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(getActivity(), sondageFragment.class);
-//                            startActivity(intent);
+                            addvotereponces();
+                            Intent intent = new Intent(getActivity(),  sondageFragment.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(getActivity(), "Erreur est survenue, ressayer!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+    }
+    private void addvotereponces() {
+        String re1 = r1.getText().toString().trim();
+        String re2 = r2.getText().toString().trim();
+        String re3 = r3.getText().toString().trim();
+        String re4 = r4.getText().toString().trim();
+        String re5 = r5.getText().toString().trim();
+
+
+
+        String keyr1 = FirebaseDatabase.getInstance().getReference("votesr").push().getKey();
+        votesr votesr1 = new votesr(keyr1,key,re1);
+        FirebaseDatabase.getInstance().getReference("votesr")
+                .child(keyr1)
+                .setValue(votesr1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                        } else {
+                        }
+                    }
+                });
+        String keyr2 = FirebaseDatabase.getInstance().getReference("votesr").push().getKey();
+        votesr votesr2 = new votesr(keyr2,key,re2);
+        FirebaseDatabase.getInstance().getReference("votesr")
+                .child(keyr2)
+                .setValue(votesr2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                        } else {
+                        }
+                    }
+                });
+        String keyr3 = FirebaseDatabase.getInstance().getReference("votesr").push().getKey();
+        votesr votesr3 = new votesr(keyr3,key,re3);
+        FirebaseDatabase.getInstance().getReference("votesr")
+                .child(keyr3)
+                .setValue(votesr3).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                        } else {
+                        }
+                    }
+                });
+        String keyr4 = FirebaseDatabase.getInstance().getReference("votesr").push().getKey();
+        votesr votesr4 = new votesr(keyr4,key,re4);
+        FirebaseDatabase.getInstance().getReference("votesr")
+                .child(keyr4)
+                .setValue(votesr4).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                        } else {
+                        }
+                    }
+                });
+        String keyr5 = FirebaseDatabase.getInstance().getReference("votesr").push().getKey();
+        votesr votesr5 = new votesr(keyr5,key,re5);
+        FirebaseDatabase.getInstance().getReference("votesr")
+                .child(keyr5)
+                .setValue(votesr5).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                        } else {
                         }
                     }
                 });
@@ -153,6 +225,9 @@ public class addVoteFragment extends Fragment {
                 break;
             case "Jul":
                 month="07";
+                break;
+            case "Aug":
+                month="08";
                 break;
         }
         char a,b;
