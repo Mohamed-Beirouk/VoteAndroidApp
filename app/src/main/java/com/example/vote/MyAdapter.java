@@ -3,6 +3,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,27 +22,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     @NonNull
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.votesentry, parent, false);
 
-        return new MyViewHolder;
+        return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        votes vote = votes.get(position);
+        holder.question.setText(vote.getQuestion());
+        holder.datefin.setText(vote.getDatefin());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return votes.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        
+        TextView question, datefin;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            question = itemView.findViewById(R.id.textquestion);
+            datefin = itemView.findViewById(R.id.textdatefin);
         }
     }
 }
