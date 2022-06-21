@@ -12,11 +12,11 @@ import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     Context context;
-    ArrayList<votes> votes;
+    ArrayList<votes> listvotes;
 
     public MyAdapter(Context context, ArrayList<com.example.vote.votes> votes) {
         this.context = context;
-        this.votes = votes;
+        this.listvotes = votes;
     }
 
 
@@ -30,14 +30,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        votes vote = votes.get(position);
+        votes vote = listvotes.get(position);
         holder.question.setText(vote.getQuestion());
         holder.datefin.setText(vote.getDatefin());
     }
 
     @Override
     public int getItemCount() {
-        return votes.size();
+        return listvotes.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
