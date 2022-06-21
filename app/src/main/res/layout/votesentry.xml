@@ -5,7 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-    app:cardCornerRadius="10dp"
+
+    android:outlineSpotShadowColor="#87CEEB"
+    android:outlineAmbientShadowColor="#87CEEB"
+    app:cardBackgroundColor="#DCDCDC"
+    app:cardCornerRadius="60dp"
     app:cardElevation="10dp"
     android:clickable="true"
     android:layout_margin="10dp">
@@ -13,18 +17,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+
+        android:layout_margin="20dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_margin="15dp"
             android:layout_gravity="center_vertical">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Question : "
+
             android:textSize="20dp"
             android:textColor="@color/black"
             android:textStyle="bold"/>
@@ -42,12 +49,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_margin="20dp"
             android:layout_gravity="center_vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Date fin   : "
                 android:textSize="20dp"
+
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
             <TextView
@@ -59,6 +68,38 @@
                 android:textStyle="bold"/>
 
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:layout_gravity="center_vertical">
+            <CheckBox android:id="@+id/r1check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="reponce 1"
+                android:onClick="onCheckboxClicked"/>
+            <CheckBox android:id="@+id/r2check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="reponce 2"
+                android:onClick="onCheckboxClicked"/>
+            <CheckBox android:id="@+id/r3check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="reponce 3"
+                android:onClick="onCheckboxClicked"/>
+            <CheckBox android:id="@+id/r4check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="reponce 4"
+                android:onClick="onCheckboxClicked"/>
+            <CheckBox android:id="@+id/r5check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="reponce 5"
+                android:onClick="onCheckboxClicked"/>
         </LinearLayout>
     </LinearLayout>
 
