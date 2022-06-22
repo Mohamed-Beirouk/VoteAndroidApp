@@ -5,19 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp"
-
-    android:outlineSpotShadowColor="#87CEEB"
-    android:outlineAmbientShadowColor="#87CEEB"
-    app:cardBackgroundColor="#DCDCDC"
-    app:cardCornerRadius="60dp"
-    app:cardElevation="10dp"
-    android:clickable="true"
-    android:layout_margin="10dp">
-
+    android:layout_margin="10dp"
+    android:foreground="@drawable/cardviewborder"
+    android:clickable="true">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_margin="20dp"
         android:orientation="vertical">
 
@@ -27,14 +20,14 @@
             android:orientation="horizontal"
             android:layout_margin="15dp"
             android:layout_gravity="center_vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Question : "
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Question : "-->
 
-            android:textSize="20dp"
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+<!--            android:textSize="20dp"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textStyle="bold"/>-->
         <TextView
             android:id="@+id/textquestion"
             android:layout_width="wrap_content"
@@ -51,14 +44,14 @@
             android:orientation="horizontal"
             android:layout_margin="20dp"
             android:layout_gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date fin   : "
-                android:textSize="20dp"
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Date fin   : "-->
+<!--                android:textSize="20dp"-->
 
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+<!--                android:textColor="@color/black"-->
+<!--                android:textStyle="bold"/>-->
             <TextView
                 android:id="@+id/textdatefin"
                 android:layout_width="wrap_content"
@@ -66,8 +59,6 @@
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"/>
-
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
