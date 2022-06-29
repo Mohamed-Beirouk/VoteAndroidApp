@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -39,15 +39,14 @@
         android:layout_marginTop="250dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
-
         android:drawablePadding="20dp"
         android:hint="Email"
+
         android:padding="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/black"
         android:background="@drawable/edittext"
         android:drawableLeft="@drawable/ic_baseline_email_24"
-
 
         />
 
@@ -83,22 +82,11 @@
         android:layout_centerHorizontal="true"
         />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/forgotpass"
-        android:layout_below="@id/loginBtn"
-        android:text="Mot de passe oublié?"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"/>
-
-
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/inscription"
-        android:layout_below="@id/forgotpass"
+        android:layout_below="@id/loginBtn"
         android:drawableLeft="@drawable/ic_baseline_person_add_alt_1_24"
         android:text="Inscription"
         android:backgroundTint="#87CEEB"

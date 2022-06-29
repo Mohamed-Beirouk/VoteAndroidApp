@@ -1,17 +1,20 @@
 package com.example.vote;
 
 public class votesr {
+
     private String id;
     private String idv;
     private String rep;
+    private String userid;
 
     public votesr() {
     }
 
-    public votesr(String id, String idv, String rep) {
+    public votesr(String id, String idv, String rep, String userid) {
         this.id = id;
         this.idv = idv;
         this.rep = rep;
+        this.userid=userid;
     }
 
     public String getId() {
@@ -36,5 +39,13 @@ public class votesr {
 
     public void setRep(String rep) {
         this.rep = rep;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 }

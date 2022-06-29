@@ -8,10 +8,15 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,16 +29,18 @@ import java.util.ArrayList;
 public class sondageFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<votes> listvotes;
+    ArrayList<votesr> listvotesr = new ArrayList<>();
     DatabaseReference databaseReference;
+    DatabaseReference databaseReference2;
     MyAdapter adapter;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sondage, container, false);
-
         recyclerView = (RecyclerView)  view.findViewById(R.id.recycleview);
+
+
         databaseReference = FirebaseDatabase.getInstance().getReference("votes");
         listvotes = new ArrayList<>();
         adapter= new MyAdapter(getActivity().getApplicationContext(), listvotes);
@@ -42,22 +49,48 @@ public class sondageFragment extends Fragment {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listvotesr=adddata();
+                int vatsawet=0;
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     votes vote = dataSnapshot.getValue(votes.class);
-                    listvotes.add(vote);
-                }
+                     vatsawet=0;
+                    for(votesr v : listvotesr){
+                       if( v.getUserid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()) && v.getIdv().equals(vote.getId())) {
+                           vatsawet=1;
+                       }
+                    }
+                    if(vatsawet==0){
+                        listvotes.add(vote);
+                    }
+                    }
                 adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            } @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
         });
-
-
-
         return view;
+    }
+    public boolean VatSawet(String iduser,votes vote,ArrayList<votesr> listvotesr){
+            for(votesr votesr : listvotesr){
+                if(votesr.getUserid()==iduser && votesr.getIdv()==vote.getId()){
+                    return true;
+                }
+            }
+            return false;
+    }
+    public ArrayList<votesr> adddata(){
+        databaseReference2 = FirebaseDatabase.getInstance().getReference("votesr");
+        databaseReference2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    votesr voter = dataSnapshot.getValue(votesr.class);
+                    listvotesr.add(voter);
+
+                }
+            }@Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
+        return listvotesr;
     }
 
 }
