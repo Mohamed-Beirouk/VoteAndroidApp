@@ -3,6 +3,8 @@ package com.example.vote;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,16 +26,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.concurrent.Executor;
 
 
 public class sondageFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<votes> listvotes;
-    ArrayList<votesr> listvotesr = new ArrayList<>();
+    public ArrayList<votesr> listvotesr = new ArrayList<>();
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2;
     MyAdapter adapter;
+
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private androidx.biometric.BiometricPrompt.PromptInfo promptinfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +54,7 @@ public class sondageFragment extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("votes");
         listvotes = new ArrayList<>();
-        adapter= new MyAdapter(getActivity().getApplicationContext(), listvotes);
+        adapter= new MyAdapter(getActivity(), listvotes);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -60,7 +71,14 @@ public class sondageFragment extends Fragment {
                        }
                     }
                     if(vatsawet==0){
-                        listvotes.add(vote);
+                        try {
+                            Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(vote.getDatefin());
+                            if(date1.after(new Date())){
+                                listvotes.add(vote);}
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
                     }
                     }
                 adapter.notifyDataSetChanged();

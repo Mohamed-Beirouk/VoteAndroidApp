@@ -21,11 +21,12 @@
         <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/activity_inscriptionactivity.xml" value="0.22" />
         <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/fragment_add_vote.xml" value="0.22" />
+        <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/fragment_add_vote.xml" value="0.25" />
         <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
         <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/fragment_result.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/fragment_sondage.xml" value="0.25" />
-        <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/votesentry.xml" value="0.376425855513308" />
+        <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/votesentry.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/layout/votesresult.xml" value="0.18" />
         <entry key="..\:/Users/Dell/Desktop/VoteAndroidApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.203125" />
         <entry key="..\:/Users/Dell/StudioProjects/Vote/app/src/main/res/layout/activity_inscriptionactivity.xml" value="0.1515625" />
         <entry key="..\:/Users/Dell/StudioProjects/Vote/app/src/main/res/layout/activity_main.xml" value="0.17089755213055305" />
@@ -37,5 +38,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.18" />
+      </ProjectState>
+    </option>
   </component>
 </project>

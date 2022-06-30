@@ -78,9 +78,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
     public void myfinger(){
         Executor executor = ContextCompat.getMainExecutor(this);
@@ -163,9 +160,7 @@ public class MainActivity extends AppCompatActivity {
                                                     Toast.LENGTH_LONG)
                                             .show();
                                 }
-
                             }
                         });
     }
-
 }

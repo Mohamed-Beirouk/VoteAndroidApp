@@ -1,12 +1,19 @@
 package com.example.vote;
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,14 +22,21 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
-    Context context;
-    ArrayList<votes> listvotes;
+import java.util.concurrent.Executor;
 
-    public MyAdapter(Context context, ArrayList<com.example.vote.votes> votes) {
+
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
+    Activity context;
+    ArrayList<votes> listvotes;
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private androidx.biometric.BiometricPrompt.PromptInfo promptinfo;
+
+    public MyAdapter(Activity context, ArrayList<com.example.vote.votes> votes) {
         this.context = context;
         this.listvotes = votes;
     }
+
 
 
     @NonNull
@@ -61,17 +75,18 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
 
-                                        holder.re1.setVisibility(View.GONE);
+//                                        Toast.makeText(context, "Publié avec succés", Toast.LENGTH_SHORT).show();
+                                        myfinger();
 
                                     } else {
-                                        holder.re2.setVisibility(View.GONE);
+                                        Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
 
 
                 }else{
-                    holder.question.setText("not good");
+                    Toast.makeText(context, "erreur survenue", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -92,17 +107,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
 
-                                        holder.re1.setVisibility(View.GONE);
-
+                                        myfinger();
                                     } else {
-                                        holder.re2.setVisibility(View.GONE);
+                                        Toast.makeText(context, "erreur", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
 
 
                 }else{
-                    holder.question.setText("not good");
+                    Toast.makeText(context, "erreur survenue", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -122,18 +136,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-
-                                        holder.re1.setVisibility(View.GONE);
-
+                                        myfinger();
                                     } else {
-                                        holder.re2.setVisibility(View.GONE);
+                                        Toast.makeText(context, "erreur", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
 
 
                 }else{
-                    holder.question.setText("not good");
+                    holder.question.setText("ereeur survenue");
                 }
 
             }
@@ -153,18 +165,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-
-                                        holder.re1.setVisibility(View.GONE);
-
+                                        myfinger();
                                     } else {
-                                        holder.re2.setVisibility(View.GONE);
+                                        Toast.makeText(context, "Erreur", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
 
 
                 }else{
-                    holder.question.setText("not good");
+                    holder.question.setText("erreur survenue");
                 }
 
             }
@@ -185,10 +195,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
 
-                                        holder.re1.setVisibility(View.GONE);
-
+                                        myfinger();
                                     } else {
-                                        holder.re2.setVisibility(View.GONE);
+                                        Toast.makeText(context, "ereeur survenue", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -234,5 +243,44 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             re5 = itemView.findViewById(R.id.r5check);
 
         }
+    }
+    public void myfinger(){
+        Executor executor = ContextCompat.getMainExecutor(context);
+
+        biometricPrompt=new BiometricPrompt((FragmentActivity) context, executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode, @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(@NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(context,
+                                "voted done",
+                                Toast.LENGTH_LONG)
+                        .show();
+
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+            }
+        });
+        promptinfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Empreinte Auth")
+                .setSubtitle("placer votre empreinte meged wjhak")
+                .setNegativeButtonText("wella 6ra7 tlfun mahi lak !!")
+                .build();
+        biometricPrompt.authenticate(promptinfo);
+//        fingerprint.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//
+//            }
+//        });
     }
 }

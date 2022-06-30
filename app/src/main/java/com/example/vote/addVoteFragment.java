@@ -29,6 +29,7 @@ import com.google.android.material.textview.MaterialTextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -65,15 +66,19 @@ public class addVoteFragment extends Fragment {
             }
         });
         publierbn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
-                addvote();
+
+                    addvote();
+
             }
         });
 
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void addvote() {
         String ques = question.getText().toString().trim();
         String date = correctDate(date2);
@@ -82,6 +87,23 @@ public class addVoteFragment extends Fragment {
         String re3 = r3.getText().toString().trim();
         String re4 = r4.getText().toString().trim();
         String re5 = r5.getText().toString().trim();
+        if(ques.isEmpty()){
+            question.setError("la question est obligatoire");
+            question.requestFocus();
+            return;
+        }
+
+
+        if(re1.isEmpty()){
+            r1.setError("au moins 2 reponces");
+            r1.requestFocus();
+            return;
+        }
+        if(re2.isEmpty()){
+            r2.setError("au moins 2 reponces");
+            r2.requestFocus();
+            return;
+        }
 
 
         String key = FirebaseDatabase.getInstance().getReference("votes").push().getKey();
@@ -102,6 +124,7 @@ public class addVoteFragment extends Fragment {
 
                         } else {
                             Toast.makeText(getActivity(), "Erreur est survenue, ressayer!", Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
@@ -198,8 +221,9 @@ public class addVoteFragment extends Fragment {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onPositiveButtonClick(Object selection) {
-
                 date2=materialDatePicker.getHeaderText();
+
+
                 pickdatebtn.setText(""+materialDatePicker.getHeaderText());
 
             }
@@ -209,10 +233,21 @@ public class addVoteFragment extends Fragment {
 
     }
     public String correctDate(String d){
+        Log.e("---------", "--------------- " +d );
+
+        Log.e("---------", "--------------- " +d.charAt(1) );
+        Log.e("---------", "--------------- " +d.charAt(2) );
+        Log.e("---------", "--------------- " +d.charAt(7) );
+        Log.e("---------", "--------------- " +d.charAt(8) );
+        Log.e("---------", "--------------- " +d.charAt(9) );
+        Log.e("---------", "--------------- " +d.charAt(10) );
+//        if(d.charAt(1)){
+//
+//        }
         char x,y,z;
-        x=d.charAt(0);
-        y=d.charAt(1);
-        z=d.charAt(2);
+        x=d.charAt(3);
+        y=d.charAt(4);
+        z=d.charAt(5);
         String month = ""+x+y+z;
         switch (month){
             case "jan":
@@ -241,17 +276,17 @@ public class addVoteFragment extends Fragment {
                 break;
         }
         char a,b;
-        a=d.charAt(4);
-        b=d.charAt(5);
+        a=d.charAt(0);
+        b=d.charAt(1);
 
         String day = ""+a+b;
 
         char c,cc,e,f;
 
-        c=d.charAt(8);
-        cc=d.charAt(9);
-        e=d.charAt(10);
-        f=d.charAt(11);
+        c=d.charAt(7);
+        cc=d.charAt(8);
+        e=d.charAt(9);
+        f=d.charAt(10);
 
         String year = (""+c+""+cc+""+e+""+f);
 
