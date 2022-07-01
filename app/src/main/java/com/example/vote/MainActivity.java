@@ -109,8 +109,8 @@ public class MainActivity extends AppCompatActivity {
         });
         promptinfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Empreinte Auth")
-                .setSubtitle("placer votre empreinte meged wjhak")
-                .setNegativeButtonText("wella 6ra7 tlfun mahi lak !!")
+                .setSubtitle("placer votre empreinte sous le lecteur")
+                .setNegativeButtonText("6ar7a mtna8ra !!")
                 .build();
         biometricPrompt.authenticate(promptinfo);
 //        fingerprint.setOnClickListener(new View.OnClickListener() {

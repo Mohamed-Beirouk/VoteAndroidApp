@@ -6,6 +6,7 @@ public class votes {
     private String id;
     private String Question;
     private String datefin;
+    private String tempsfin;
     String re1;
     String re2;
     String re3;
@@ -42,6 +43,26 @@ public class votes {
         this.re3 = re3;
         this.re4 = re4;
         this.re5 = re5;
+    }
+
+    public votes(String id, String question, String datefin, String tempsfin, String re1, String re2, String re3, String re4, String re5) {
+        this.id = id;
+        Question = question;
+        this.datefin = datefin;
+        this.tempsfin = tempsfin;
+        this.re1 = re1;
+        this.re2 = re2;
+        this.re3 = re3;
+        this.re4 = re4;
+        this.re5 = re5;
+    }
+
+    public String getTempsfin() {
+        return tempsfin;
+    }
+
+    public void setTempsfin(String tempsfin) {
+        this.tempsfin = tempsfin;
     }
 
     public String getRe1() {

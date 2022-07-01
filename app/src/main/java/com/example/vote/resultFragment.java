@@ -61,6 +61,13 @@ public class resultFragment extends Fragment {
                     if(vatsawet==0){
                         try {
                             Date date1 = new SimpleDateFormat("dd/MM/yyyy").parse(vote.getDatefin());
+                            String temp = vote.getTempsfin();
+                            String h=(temp.charAt(0)+""+temp.charAt(1));
+                            String m=(temp.charAt(3)+""+temp.charAt(4));
+                            int hh=Integer.parseInt(h);
+                            int mm=Integer.parseInt(m);
+                            date1.setHours(hh);
+                            date1.setMinutes(mm);
                             if(date1.before(new Date())){
                                 listvotes.add(vote);}
                         } catch (ParseException e) {

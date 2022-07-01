@@ -27,12 +27,12 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-
 public class MyAdapterr extends RecyclerView.Adapter<MyAdapterr.MyViewHolder> {
     Context context;
     ArrayList<votes> listvotes;
     ArrayList<votesr> votesrlist = new ArrayList<>();
     ArrayList barArrayList;
+
 
 
     public MyAdapterr(Context context, ArrayList<com.example.vote.votes> votes) {
@@ -68,45 +68,66 @@ public class MyAdapterr extends RecyclerView.Adapter<MyAdapterr.MyViewHolder> {
         holder.question.setText(vote.getQuestion());
         //traitement resultat
         Log.e(" -------------------", "----------- = "+votesrlist.size());
-        int nr1=0,nr2=0,nr3=0,nr4=0,nr5=0;
+        int nr1=0,nr2=0,nr3=0,nr4=0,nr5=0,somme=1;
         for(votesr v : votesrlist){
             if(v.getIdv().equals(vote.getId())  && v.getRep().equals(vote.getRe1()) ){
                 nr1++;
+                somme++;
+
             }
             if(v.getIdv().equals(vote.getId())  && v.getRep().equals(vote.getRe2()) ){
                 nr2++;
+                somme++;
             }
             if(v.getIdv().equals(vote.getId())  && v.getRep().equals(vote.getRe3()) ){
                 nr3++;
+                somme++;
             }
             if(v.getIdv().equals(vote.getId())  && v.getRep().equals(vote.getRe4()) ){
                 nr4++;
+                somme++;
             }
             if(v.getIdv().equals(vote.getId())  && v.getRep().equals(vote.getRe5()) ){
                 nr5++;
+                somme++;
             }
-
         }
-        if(vote.getRe3().length()<1){
+        float nr1p,nr2p,nr3p,nr4p,nr5p;
+
+        nr1p=(nr1*50)/somme;
+        nr2p=(nr2*50)/somme;
+        nr3p=(nr3*50)/somme;
+        nr4p=(nr4*50)/somme;
+        nr5p=(nr5*50)/somme;
+        barArrayList = new ArrayList();
+        final String[] labels = new String[] { " ", " ",vote.getRe1(), vote.getRe2(), vote.getRe3(),vote.getRe4(),vote.getRe5()};
+
+        barArrayList.add(new BarEntry(2f,nr1p));
+        barArrayList.add(new BarEntry(3f,nr2p));
+        barArrayList.add(new BarEntry(4f,nr3p));
+        barArrayList.add(new BarEntry(5f,nr4p));
+        barArrayList.add(new BarEntry(6f,nr5p));
+
+
+
+//        if(vote.getRe3().length()<1){
 //            holder.re3.setVisibility(View.GONE);
 //            Log.e(" cond", "re3 = "+vote.getRe3());
-        }
-        if(vote.getRe4().length()<1){
+//
+//        }
+//        if(vote.getRe4().length()<1){
 //            holder.re4.setVisibility(View.GONE);
-        }
-        if(vote.getRe5().length()<1){
+//
+//        }
+//        if(vote.getRe5().length()<1){
 //            holder.re5.setVisibility(View.GONE);
-        }
+//
+//        }
 
-//        holder.re1.setText(vote.getRe1()+" a eu "+nr1+" votes");
-//        holder.re2.setText(vote.getRe2()+" a eu "+nr2+" votes");
-//        holder.re3.setText(vote.getRe3()+" a eu "+nr3+" votes");
-//        holder.re4.setText(vote.getRe4()+" a eu "+nr4+" votes");
-//        holder.re5.setText(vote.getRe5()+" a eu "+nr5+" votes");
 
-        inidata();
+
         BarDataSet bardataset;
-        bardataset = new BarDataSet(barArrayList, "question");
+        bardataset = new BarDataSet(barArrayList, "Ce sondage a terminé le "+vote.getTempsfin()+" "+vote.getDatefin());
         BarData bardata = new BarData(bardataset);
         holder.barchart.setData(bardata);
         bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
@@ -114,28 +135,13 @@ public class MyAdapterr extends RecyclerView.Adapter<MyAdapterr.MyViewHolder> {
         bardataset.setValueTextSize(16f);
         holder.barchart.getDescription().setEnabled(true);
         XAxis xAxis = holder.barchart.getXAxis();
-        final String[] labels = new String[] {"Dummy", "Jan", "Feb", "March", "April","mai","jun"};
         xAxis.setValueFormatter(new IndexAxisValueFormatter(labels));
-        xAxis.setGranularity(0f);
-        xAxis.setGranularityEnabled(true);
-
-
-
-    }
-    public void inidata()
-    {
-        barArrayList = new ArrayList();
-        barArrayList.add(new BarEntry(2f,10));
-        barArrayList.add(new BarEntry(3f,20));
-        barArrayList.add(new BarEntry(4f,30));
-        barArrayList.add(new BarEntry(5f,40));
-        barArrayList.add(new BarEntry(6f,50));
+        xAxis.setLabelCount(barArrayList.size());
     }
         @Override
         public int getItemCount () {
             return listvotes.size();
         }
-
         public static class MyViewHolder extends RecyclerView.ViewHolder {
             TextView question;
             CheckBox re1, re2, re3, re4, re5;
@@ -144,20 +150,6 @@ public class MyAdapterr extends RecyclerView.Adapter<MyAdapterr.MyViewHolder> {
                 super(itemView);
                 question = itemView.findViewById(R.id.textquestionn);
                 barchart = itemView.findViewById(R.id.barchart);
-
-//                re1 = itemView.findViewById(R.id.r1checkn);
-//                re2 = itemView.findViewById(R.id.r2checkn);
-//                re3 = itemView.findViewById(R.id.r3checkn);
-//                re4 = itemView.findViewById(R.id.r4checkn);
-//                re5 = itemView.findViewById(R.id.r5checkn);
-
-
-
-
-
             }
-
         }
-
-
     }

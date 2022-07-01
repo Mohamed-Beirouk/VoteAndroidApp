@@ -26,7 +26,6 @@
         android:layout_below="@id/questionlabel"
         android:background="@drawable/edittext"
         android:hint="question"
-
         android:textColorHint="@color/black"
         android:textColor="@color/black"
         android:layout_margin="5dp"
@@ -34,26 +33,51 @@
 
         android:drawablePadding="20dp"/>
 
-    <com.google.android.material.button.MaterialButton
+    <RelativeLayout
+        android:id="@+id/socialicons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/pickdatebtn"
-        android:layout_below="@id/question"
-        android:text="Date fin"
-        android:drawableLeft="@drawable/ic_baseline_date_range_24"
-        android:textColor="@color/black"
-        android:background="#30ffffff"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="5dp"
-        android:padding="10dp"
-        android:drawablePadding="20dp"
-        />
 
+        android:layout_below="@id/question"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/picktimebtn"
+            android:layout_width="200dp"
+            android:layout_height="72dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_date_range_24"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:text="temps fin"
+            android:textColor="@color/black"
+            app:layout_constraintBaseline_toBaselineOf="@+id/pickdatebtn"
+            app:layout_constraintEnd_toStartOf="@+id/pickdatebtn"
+             />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/pickdatebtn"
+            android:layout_width="200dp"
+            android:layout_height="72dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_date_range_24"
+            android:drawablePadding="20dp"
+            android:padding="10dp"
+            android:layout_toRightOf="@id/picktimebtn"
+            android:text="Date fin"
+            android:textColor="@color/black"
+             />
+
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/jj"
-        android:layout_below="@id/pickdatebtn"
+        android:layout_below="@id/socialicons"
         android:text="Reponces    possibles"
         android:fontFamily="@font/bungee"
         android:gravity="center"
@@ -74,19 +98,23 @@
         android:padding="12dp"
 
         android:drawablePadding="20dp"/>
+
     <EditText
+        android:id="@+id/r2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/r2"
         android:layout_below="@id/r1"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/edittext"
-        android:hint="reponce 2 "
-        android:textColorHint="@color/black"
-        android:textColor="@color/black"
-        android:layout_margin="5dp"
-        android:padding="12dp"
 
-        android:drawablePadding="20dp"/>
+        android:drawablePadding="20dp"
+        android:hint="reponce 2 "
+        android:padding="12dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black" />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -52,6 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         votes vote = listvotes.get(position);
         holder.question.setText(vote.getQuestion());
         holder.datefin.setText(vote.getDatefin());
+        holder.tempsfin.setText(holder.tempsfin.getText()+""+vote.getTempsfin()+" ");
         holder.idvote.setText(vote.getId());
         holder.re1.setText(vote.getRe1());
         holder.re2.setText(vote.getRe2());
@@ -228,7 +229,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView question, datefin, idvote;
+        TextView question, datefin, tempsfin, idvote;
         CheckBox re1,re2,re3,re4,re5;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -236,6 +237,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             question = itemView.findViewById(R.id.textquestion);
             idvote = itemView.findViewById(R.id.idvote);
             datefin = itemView.findViewById(R.id.textdatefin);
+            tempsfin = itemView.findViewById(R.id.texttempsfin);
             re1 = itemView.findViewById(R.id.r1check);
             re2 = itemView.findViewById(R.id.r2check);
             re3 = itemView.findViewById(R.id.r3check);
@@ -271,8 +273,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
         });
         promptinfo = new BiometricPrompt.PromptInfo.Builder()
                 .setTitle("Empreinte Auth")
-                .setSubtitle("placer votre empreinte meged wjhak")
-                .setNegativeButtonText("wella 6ra7 tlfun mahi lak !!")
+                .setSubtitle("placer votre empreinte sous le lecteur")
+                .setNegativeButtonText("6ar7a mtna8ra !!")
                 .build();
         biometricPrompt.authenticate(promptinfo);
 //        fingerprint.setOnClickListener(new View.OnClickListener() {
