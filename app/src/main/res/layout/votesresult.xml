@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -8,23 +9,21 @@
     android:layout_margin="10dp"
     android:foreground="@drawable/cardviewborder"
     android:clickable="true">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:orientation="vertical">
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_margin="15dp"
             android:orientation="horizontal">
-
-
             <TextView
                 android:id="@+id/textquestionn"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="C'est bon 8ark "
@@ -32,46 +31,20 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
             android:orientation="vertical"
             android:layout_margin="20dp"
             android:layout_gravity="center_vertical">
 
-            <CheckBox android:id="@+id/r1checkn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="reponce 1"
-                android:textSize="20dp"
-                android:onClick="onCheckboxClicked"/>
-            <CheckBox android:id="@+id/r2checkn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="reponce 2"
-                android:textSize="20dp"
-                android:onClick="onCheckboxClicked"/>
-            <CheckBox android:id="@+id/r3checkn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="reponce 3"
-                android:onClick="onCheckboxClicked"/>
-            <CheckBox android:id="@+id/r4checkn"
-                android:layout_width="wrap_content"
-                android:textSize="20dp"
-                android:layout_height="wrap_content"
-                android:text="reponce 4"
-                android:onClick="onCheckboxClicked"/>
-            <CheckBox android:id="@+id/r5checkn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="reponce 5"
-                android:onClick="onCheckboxClicked"/>
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 
